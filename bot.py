@@ -1,6 +1,8 @@
 import os
+
 import discord
 from loguru import logger
+
 import database
 
 logger.add("messages.log", enqueue=True, colorize=True,

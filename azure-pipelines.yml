@@ -1,0 +1,22 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7'
+    architecture: 'x64'
+
+- script: |
+    python -m pip install --upgrade pip setuptools wheel
+    pip install pipenv
+    pipenv install
+  displayName: 'Install prerequisites'
+
+- script: |
+    pipenv install flake8
+    pipenv run flake8 .
+  displayName: 'Run lint tests'

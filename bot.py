@@ -8,7 +8,7 @@ import database
 logger.add("messages.log", enqueue=True, colorize=True,
            format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> "
            "<level>{message}</level>")
-client = discord.Client()
+client = discord.Client(status="invisible")
 
 
 @client.event

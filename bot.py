@@ -24,9 +24,8 @@ async def on_message(message):
     content = (message.attachments[0].proxy_url
                if message.attachments else message.content)
 
-    database.add_message(message.id, message.created_at, content,
-                         message.author.id, message.guild.id,
-                         message.channel.id)
+    database.add_message(message.guild.id, message.id, message.created_at,
+                         content, message.author.id, message.channel.id)
 
     logger.info("({0.guild} - #{0.channel}) {0.author}: {1}", message,
                 content, feature="f-strings")
